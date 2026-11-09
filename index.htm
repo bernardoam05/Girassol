@@ -2,8 +2,31 @@
 <html>
   <head>
     <style>
+      :root {
+        color-scheme: light dark;
+        --background: #ffffff;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #121212;
+        }
+      }
+
       body {
         margin: 0;
+        background-color: var(--background);
+        background-image: url("Frontyard.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-image: url("Night.webp");
+        }
       }
     </style>
   </head>
@@ -17,7 +40,7 @@
       <title>GIRASSOLE</title>
       <desc>THE ZOMBIES ARE COMING</desc>
 
-      <rect x="0" y="0" width="10000" height="10000" fill="url(#fundo)" />
+      <rect id="fundo" x="0" y="0" width="10000" height="10000" fill="none" />
 
       <path
         id="caule-baixo"
