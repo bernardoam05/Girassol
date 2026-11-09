@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="10000" height="10000">
+      <title>GIRASSOLE</title>
+      <desc>PARA TI</desc>
+
+      <rect x="0" y="0" width="10000" height="10000" fill="url(#fundo)" />
+
+      <path
+        id="caule-baixo"
+        d="M300 500 L300 435"
+        stroke="green"
+        fill="none"
+        stroke-width="10"
+      />
+
+      <defs>
+        <path
+          id="petala"
+          d="M0 0
+             Q25 -100, 50 0"
+          fill="yellow"
+        />
+
+        <path
+          id="folha"
+          d="M0 0
+             C25 -35, 65 -45, 85 -30
+             C65 0, 30 10, 0 0 Z"
+          fill="green"
+          stroke="black"
+        />
+
+        <g
+          fill="url(#corPetala)"
+          stroke="#ad1457"
+          stroke-width="2"
+          id="conjunto"
+        >
+          <use
+            href="#petala"
+            transform="rotate(-10 245 230) translate(220, 235)"
+          />
+          <use
+            href="#petala"
+            transform="rotate(-27 245 230) translate(168, 227)"
+          />
+          <use
+            href="#petala"
+            transform="rotate(-60 245 230) translate(135, 190)"
+          />
+        </g>
+      </defs>
+
+      <!-- <g fill="#4caf50" stroke="#1b5e20" stroke-width="2">
+        <use href="#folha" transform="translate(487 479) rotate(290)" />
+        <use href="#folha" transform="translate(459 566) rotate(-20)" />
+      </g> -->
+
+      <g id="parte-superior">
+        <path
+          id="caule-cima"
+          d="M300 435 L300 370"
+          stroke="green"
+          fill="none"
+          stroke-width="10"
+        />
+
+      <g id="flor" fill="url(#corPetala)" stroke="#ad1457" stroke-width="2">
+        <!-- cima -->
+        <use href="#petala" transform="translate(275, 230)" />
+        <use href="#conjunto" transform="translate(600, 600) scale(-1)" />
+        <use href="#conjunto" transform="scale(1 -1) translate(0, -600)" />
+        <use href="#conjunto" transform="scale(-1 1) translate(-600, 0)" />
+        <use href="#conjunto" />
+        <!-- baixo -->
+        <use href="#petala" transform="translate(325, 370) scale(-1)" />
+      </g>
+
+      <ellipse cx="300" cy="300" rx="150" ry="70" fill="brown" />
+
+      <path
+        id="boca"
+        d="M205 310 Q300 400 425 310"
+        stroke="black"
+        fill="none"
+        stroke-width="6"
+      />
+
+      <ellipse cx="250" cy="275" rx="10" ry="25" fill="black" />
+      <ellipse cx="350" cy="275" rx="10" ry="25" fill="black" />
+
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        values="0 300 435; 4 300 435; 0 300 435; -4 300 435; 0 300 435"
+        dur="3s"
+        repeatCount="indefinite"
+      />
+      </g>
+
+      <use href="#folha" transform="translate(300, 500)" />
+      <use href="#folha" transform="translate(300, 500) rotate(20)" />
+      <use href="#folha" transform="scale(-1 1) translate(-300 500)" />
+      <use href="#folha" transform="scale(-1 1) translate(-300 500) rotate(20)" />
+    </svg>
+  </body>
+  <html></html>
+</html>
