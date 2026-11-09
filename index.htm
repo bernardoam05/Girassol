@@ -2,8 +2,31 @@
 <html>
   <head>
     <style>
+      :root {
+        color-scheme: light dark;
+        --background: #ffffff;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #121212;
+        }
+      }
+
       body {
         margin: 0;
+        background-color: var(--background);
+        background-image: url("Frontyard.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-image: url("Night.webp");
+        }
       }
     </style>
   </head>
@@ -17,7 +40,7 @@
       <title>GIRASSOLE</title>
       <desc>THE ZOMBIES ARE COMING</desc>
 
-      <rect x="0" y="0" width="10000" height="10000" fill="url(#fundo)" />
+      <rect id="fundo" x="0" y="0" width="10000" height="10000" fill="none" />
 
       <path
         id="caule-baixo"
@@ -42,6 +65,13 @@
              C65 0, 30 10, 0 0 Z"
           fill="green"
           stroke="black"
+        />
+
+        <path
+          id="olho_fundo"
+          d="M -2 -21 L 2 -21 Q 11 -21 11 -10 L 11 11 Q 11 21 0 21 Q -11 21 -11 11 L -11 -10 Q -11 -21 -2 -21 Z"
+          fill="black"
+          stroke-linejoin="round"
         />
 
         <g
@@ -74,40 +104,35 @@
           stroke-width="10"
         />
 
-      <g id="flor" fill="url(#corPetala)" stroke="#ad1457" stroke-width="2">
-        <!-- cima -->
-        <use href="#petala" transform="translate(275, 230)" />
-        <use href="#conjunto" transform="translate(600, 600) scale(-1)" />
-        <use href="#conjunto" transform="scale(1 -1) translate(0, -600)" />
-        <use href="#conjunto" transform="scale(-1 1) translate(-600, 0)" />
-        <use href="#conjunto" />
-        <!-- baixo -->
-        <use href="#petala" transform="translate(325, 370) scale(-1)" />
-      </g>
+      <g id="cabeca" transform="scale(1 1.2) translate(0 -50)">
 
-      <ellipse cx="300" cy="300" rx="150" ry="70" fill="brown" />
+        <g id="flor" fill="url(#corPetala)" stroke="#ad1457" stroke-width="2">
+          <!-- cima -->
+          <use href="#petala" transform="translate(275, 230)" />
+          <use href="#conjunto" transform="translate(600, 600) scale(-1)" />
+          <use href="#conjunto" transform="scale(1 -1) translate(0, -600)" />
+          <use href="#conjunto" transform="scale(-1 1) translate(-600, 0)" />
+          <use href="#conjunto" />
+          <!-- baixo -->
+          <use href="#petala" transform="translate(325, 370) scale(-1)" />
+        </g>
 
-      <path
-        id="boca"
-        d="M205 310 Q300 400 425 310"
-        stroke="black"
-        fill="none"
-        stroke-width="6"
-      />
-
-      <defs>
+        <ellipse cx="300" cy="300" rx="150" ry="70" fill="brown" />
         <path
-          id="olho_fundo"
-          d="M -2 -25 L 2 -25 Q 11 -25 11 -13 L 11 15 Q 11 25 0 25 Q -11 25 -11 15 L -11 -13 Q -11 -25 -2 -25 Z"
-          fill="black"
-          stroke-linejoin="round"
+          id="boca"
+          d="M205 310 Q300 400 425 310"
+          stroke="black"
+          fill="none"
+          stroke-width="6"
         />
-      </defs>
-      <use href="#olho_fundo" transform="translate(250, 275)" />
-      <use href="#olho_fundo" transform="translate(350, 275)" />
 
-      <circle cx="245" cy="265" r="4" fill="white"/>
-      <circle cx="345" cy="265" r="4" fill="white"/>
+        <!-- olhos -->
+        <use href="#olho_fundo" transform="translate(250, 275)" />
+        <use href="#olho_fundo" transform="translate(350, 275)" />
+
+        <circle cx="245" cy="265" r="4" fill="white" />
+        <circle cx="345" cy="265" r="4" fill="white" />
+      </g>
 
       <animateTransform
         attributeName="transform"
