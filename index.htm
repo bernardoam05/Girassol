@@ -28,6 +28,26 @@
           background-image: url("Night.webp");
         }
       }
+
+      #btn-tema {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        padding: 4px 6px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+        transition: transform 0.15s;
+      }
+
+      #btn-tema:hover {
+        transform: scale(1.1) rotate(-4deg);
+      }
+
+      #btn-tema[aria-pressed="true"] {
+        transform: translateY(2px);
+      }
     </style>
   </head>
   <body>
@@ -148,6 +168,57 @@
       <use href="#folha" transform="scale(-1 1) translate(-300 500)" />
       <use href="#folha" transform="scale(-1 1) translate(-300 500) rotate(20)" />
     </svg>
+
+    <audio id="tema" src="theme.mp3" loop preload="auto"></audio>
+    <button id="btn-tema" type="button" aria-pressed="false" aria-label="Play theme" title="Play theme">
+      <svg id="icone-lapide" viewBox="0 0 48 56" width="44" height="52" aria-hidden="true">
+        <ellipse cx="24" cy="51" rx="21" ry="4" fill="#2e7d32" opacity="0.8" />
+        <path d="M7 50 L7 20 Q7 4 24 4 Q41 4 41 20 L41 50 Z" fill="#9e9e9e" stroke="#37474f" stroke-width="3" stroke-linejoin="round" />
+        <path d="M12 48 L12 21 Q12 10 22 9" fill="none" stroke="#cfd8dc" stroke-width="2.5" stroke-linecap="round" />
+        <path id="icone-play" d="M18 17 L33 28 L18 39 Z" fill="#455a64" stroke="#455a64" stroke-width="3" stroke-linejoin="round" />
+        <path id="icone-pausa" d="M18 18 L18 38 M30 18 L30 38" stroke="#455a64" stroke-width="5" stroke-linecap="round" display="none" />
+      </svg>
+    </button>
+    <script>
+      const audio = document.getElementById("tema");
+      const btn = document.getElementById("btn-tema");
+      btn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play().catch(() => {});
+        } else {
+          audio.pause();
+        }
+      });
+
+      const startOnInteraction = (ev) => {
+        if (btn.contains(ev.target)) return;
+        ["pointerdown", "keydown", "touchstart"].forEach((e) =>
+          document.removeEventListener(e, startOnInteraction)
+        );
+        if (audio.paused) audio.play().catch(() => {});
+      };
+      window.addEventListener("load", () => {
+        audio.play().catch(() => {
+          ["pointerdown", "keydown", "touchstart"].forEach((e) =>
+            document.addEventListener(e, startOnInteraction)
+          );
+        });
+      });
+      audio.addEventListener("play", () => {
+        btn.title = "Pause theme";
+        btn.setAttribute("aria-label", "Pause theme");
+        btn.setAttribute("aria-pressed", "true");
+        document.getElementById("icone-pausa").removeAttribute("display");
+        document.getElementById("icone-play").setAttribute("display", "none");
+      });
+      audio.addEventListener("pause", () => {
+        btn.title = "Play theme";
+        btn.setAttribute("aria-label", "Play theme");
+        btn.setAttribute("aria-pressed", "false");
+        document.getElementById("icone-pausa").setAttribute("display", "none");
+        document.getElementById("icone-play").removeAttribute("display");
+      });
+    </script>
   </body>
   <html></html>
 </html>
