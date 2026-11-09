@@ -74,29 +74,32 @@
           stroke-width="10"
         />
 
-      <g id="flor" fill="url(#corPetala)" stroke="#ad1457" stroke-width="2">
-        <!-- cima -->
-        <use href="#petala" transform="translate(275, 230)" />
-        <use href="#conjunto" transform="translate(600, 600) scale(-1)" />
-        <use href="#conjunto" transform="scale(1 -1) translate(0, -600)" />
-        <use href="#conjunto" transform="scale(-1 1) translate(-600, 0)" />
-        <use href="#conjunto" />
-        <!-- baixo -->
-        <use href="#petala" transform="translate(325, 370) scale(-1)" />
+      <g id="cabeca" transform="scale(1 1.2) translate(0 -50)">
+
+        <g id="flor" fill="url(#corPetala)" stroke="#ad1457" stroke-width="2">
+          <!-- cima -->
+          <use href="#petala" transform="translate(275, 230)" />
+          <use href="#conjunto" transform="translate(600, 600) scale(-1)" />
+          <use href="#conjunto" transform="scale(1 -1) translate(0, -600)" />
+          <use href="#conjunto" transform="scale(-1 1) translate(-600, 0)" />
+          <use href="#conjunto" />
+          <!-- baixo -->
+          <use href="#petala" transform="translate(325, 370) scale(-1)" />
+        </g>
+        
+        <ellipse cx="300" cy="300" rx="150" ry="70" fill="brown" />
+        <path
+          id="boca"
+          d="M205 310 Q300 400 425 310"
+          stroke="black"
+          fill="none"
+          stroke-width="6"
+        />
+  
+        <ellipse cx="250" cy="275" rx="10" ry="25" fill="black" />
+        <ellipse cx="350" cy="275" rx="10" ry="25" fill="black" />
       </g>
 
-      <ellipse cx="300" cy="300" rx="150" ry="70" fill="brown" />
-
-      <path
-        id="boca"
-        d="M205 310 Q300 400 425 310"
-        stroke="black"
-        fill="none"
-        stroke-width="6"
-      />
-
-      <ellipse cx="250" cy="275" rx="10" ry="25" fill="black" />
-      <ellipse cx="350" cy="275" rx="10" ry="25" fill="black" />
 
       <animateTransform
         attributeName="transform"
