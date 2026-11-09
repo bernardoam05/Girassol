@@ -95,8 +95,16 @@
         stroke-width="6"
       />
 
-      <ellipse cx="250" cy="275" rx="10" ry="25" fill="black" />
-      <ellipse cx="350" cy="275" rx="10" ry="25" fill="black" />
+      <defs>
+        <path
+          id="olho_fundo"
+          d="M -2 -25 L 2 -25 Q 11 -25 11 -13 L 11 15 Q 11 25 0 25 Q -11 25 -11 15 L -11 -13 Q -11 -25 -2 -25 Z"
+          fill="black"
+          stroke-linejoin="round"
+        />
+      </defs>
+      <use href="#olho_fundo" transform="translate(250, 275)" />
+      <use href="#olho_fundo" transform="translate(350, 275)" />
 
       <circle cx="245" cy="265" r="4" fill="white"/>
       <circle cx="345" cy="265" r="4" fill="white"/>
